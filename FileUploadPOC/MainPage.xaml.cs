@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Plugin.FilePicker;
+using Xamarin.Essentials;
+using System.Security.Cryptography.X509Certificates;
 
 namespace FileUploadPOC
 {
@@ -26,7 +28,7 @@ namespace FileUploadPOC
                 string[] fileTypes = null;
                 if (Device.RuntimePlatform == Device.iOS)
                 {
-                    fileTypes = new string[] { "public.image" }; // same as iOS constant UTType.Image
+                    fileTypes = new string[] {"com.adobe.pdf", "public.rft", "com.microsoft.word.doc", "org.openxmlformats.wordprocessingml.document" }; // same as iOS constant UTType.Image
                 }
                 await PickAndShow(fileTypes);
             }
@@ -41,6 +43,7 @@ namespace FileUploadPOC
         {
             try
             {
+                //var file=await filepi
                 var pickedFile = await CrossFilePicker.Current.PickFile(fileTypes);
 
                 if (pickedFile != null)
