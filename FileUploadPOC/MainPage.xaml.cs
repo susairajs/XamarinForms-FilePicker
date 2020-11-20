@@ -43,28 +43,17 @@ namespace FileUploadPOC
         {
             try
             {
-                //var file=await filepi
+                
                 var pickedFile = await CrossFilePicker.Current.PickFile(fileTypes);
-
                 if (pickedFile != null)
                 {
-                    lblResult.Text = pickedFile.FilePath;
-
-                    //if (pickedFile.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase)
-                    //    || pickedFile.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase))
-                    //{
-                    //    FileImagePreview.Source = ImageSource.FromStream(() => pickedFile.GetStream());
-                    //    FileImagePreview.IsVisible = true;
-                    //}
-                    //else
-                    //{
-                    //    FileImagePreview.IsVisible = false;
-                    //}
+                    lblName.Text = pickedFile.FileName;
+                    lblFilePath.Text = pickedFile.FilePath;
                 }
             }
             catch (Exception ex)
             {
-                lblResult.Text = ex.ToString();
+                
             }
         }
     }
